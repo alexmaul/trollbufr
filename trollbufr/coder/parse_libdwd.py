@@ -203,7 +203,7 @@ def load_tab_cf(tables, fname):
 
 def get_file(tabnum, base_path, master, center, subcenter, master_vers, local_vers):
     mp = base_path
-    lp = os.path.join(base_path, "local_%05d_%05d" % (center, subcenter))
+    lp = os.path.join(base_path, "local_%03d_%03d" % (center, subcenter))
     if '%' in _table_file_names[tabnum]:
         m = os.path.join(mp, _table_file_names[tabnum] % (master_vers))
         l = os.path.join(lp, _table_file_names[tabnum] % (local_vers))
