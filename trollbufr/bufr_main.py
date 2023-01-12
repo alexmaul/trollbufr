@@ -183,8 +183,11 @@ def read_bufr_to_json(args):
             finally:
                 json_data.append(json_data_item)
     import json
-    out_fh = open(args.out_file, "w") or sys.stdout
-    with out_fh as fh_out:
+    try:
+        fh_out = open(args.out_file, "w")
+    except:
+        fh_out = sys.stdout
+    with fh_out:
         if args.sparse:
             json.dump(json_data, fh_out)
         else:

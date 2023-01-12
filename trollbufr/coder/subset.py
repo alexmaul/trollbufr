@@ -551,6 +551,7 @@ class SubsetWriter():
             if self._dl[self._di] > 200000 and self._dl[self._di] % 1000 == 255:
                 # YYY==255 is signal-of-end
                 break
+            print(self._di,self._dl[self._di], lst)
             val = [((1 << an) - 1) & ((1 << (an - 1)) if v < 0 else 0) & v
                    for v in lst]
             rl[self._dl[self._di]] = lst[self._vi]
