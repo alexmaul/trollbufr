@@ -58,7 +58,7 @@ class TableCache(object):
         key = (master, center, subcenter, master_vers, local_vers)
         for ckey, tables in self._cache:
             if ckey == key:
-                logger.info("Tables from cache: %s", "-".join(str(x) for x in key))
+                logger.debug("Tables from cache: %s", "-".join(str(x) for x in key))
                 break
         else:
             tables = load_all(master, center, subcenter, master_vers, local_vers, self._base_path, self._tabf)
@@ -95,7 +95,7 @@ def load_all(master, center, subcenter, master_vers, local_vers, base_path, tabf
     try:
         mp, _ = tparse.get_file("A", base_path, master, center, subcenter, master_vers, local_vers)
         tparse.load_tab_a(tables, mp)
-        logger.info(_text_tab_loaded, mp)
+        logger.debug(_text_tab_loaded, mp)
     except Exception as e:
         logger.warning(e)
     #
@@ -104,11 +104,11 @@ def load_all(master, center, subcenter, master_vers, local_vers, base_path, tabf
         mp, lp = tparse.get_file("B", base_path, master, center, subcenter, master_vers, local_vers)
         # International (master) table
         tparse.load_tab_b(tables, mp)
-        logger.info(_text_tab_loaded, mp)
+        logger.debug(_text_tab_loaded, mp)
         # Local table
         if local_vers:
             tparse.load_tab_b(tables, lp)
-            logger.info(_text_tab_loaded, lp)
+            logger.debug(_text_tab_loaded, lp)
     except Exception as e:
         logger.error(e)
         raise e
@@ -117,7 +117,7 @@ def load_all(master, center, subcenter, master_vers, local_vers, base_path, tabf
     try:
         mp, _ = tparse.get_file("C", base_path, master, center, subcenter, master_vers, local_vers)
         tparse.load_tab_c(tables, mp)
-        logger.info(_text_tab_loaded, mp)
+        logger.debug(_text_tab_loaded, mp)
     except Exception as e:
         logger.warning(e)
     #
@@ -126,11 +126,11 @@ def load_all(master, center, subcenter, master_vers, local_vers, base_path, tabf
         mp, lp = tparse.get_file("D", base_path, master, center, subcenter, master_vers, local_vers)
         # International (master) table
         tparse.load_tab_d(tables, mp)
-        logger.info(_text_tab_loaded, mp)
+        logger.debug(_text_tab_loaded, mp)
         # Local table
         if local_vers:
             tparse.load_tab_d(tables, lp)
-            logger.info(_text_tab_loaded, lp)
+            logger.debug(_text_tab_loaded, lp)
     except Exception as e:
         logger.error(e)
         raise e
@@ -140,11 +140,11 @@ def load_all(master, center, subcenter, master_vers, local_vers, base_path, tabf
         mp, lp = tparse.get_file("CF", base_path, master, center, subcenter, master_vers, local_vers)
         # International (master) table
         tparse.load_tab_cf(tables, mp)
-        logger.info(_text_tab_loaded, mp)
+        logger.debug(_text_tab_loaded, mp)
         # Local table
         if local_vers:
             tparse.load_tab_cf(tables, lp)
-            logger.info(_text_tab_loaded, lp)
+            logger.debug(_text_tab_loaded, lp)
     except Exception as er:
         logger.warning(er)
 
